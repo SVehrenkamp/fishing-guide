@@ -6,7 +6,7 @@ An interactive fishing journal to keep track of your success.  App records curre
 - Bower
 - Grunt
 - MongoDB
-#Installation
+# Installation
 - Make sure you have the above requirements installed before continuing.
 - Clone the project, ```cd /into/cloned/directory```
 - Run ```npm install``` to install node dependencies
