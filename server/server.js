@@ -7,6 +7,11 @@ var app = module.exports = loopback();
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname);
 
+
+var path = require('path');
+//App Entry Point index.html file
+app.use(loopback.static(path.resolve(__dirname, '../client')));
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
