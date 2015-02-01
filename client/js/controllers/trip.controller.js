@@ -38,7 +38,17 @@ app.controller('TripController', function($scope, $trips, $weather){
 			};
 
 		$scope.weather = weatherData;
-		$trips.postData(JSON.stringify(weatherData));
 	});
+
+	$trips.getTrips().then(function(resp){
+		$scope.trips = resp.data;
+	});
+
+	$scope.postData = function(){
+		$trips.postData(JSON.stringify($scope.weather));
+		$trips.getTrips().then(function(resp){
+		$scope.trips = resp.data;
+	});
+	};
 
 });
