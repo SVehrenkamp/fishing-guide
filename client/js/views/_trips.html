@@ -1,18 +1,19 @@
 <div ng-controller="TripController">
 	<h2>My Trips</h2>
 	<div id="trips-container">
-		{{weather}}
 		<table class="table table-striped">
 			<thead>
 				<td>Date</td>
 				<td>Location</td>
-				<td>Duration</td>
+				<td>Temperature</td>
 			</thead>
 			<tr ng-repeat="trip in trips">
 				<td>{{trip.start_time}}</td>
-				<td>{{trip.origin}}</td>
-				<td>{{trip.id}}</td>
+				<td>{{trip.origin[0].city}}</td>
+				<td>{{trip.snapshots[0].temperature}}</td>
 			</tr>
 		</table>
+
+		<button class="btn btn-primary" ng-click="postData()">Take Snapshot</button>
 	</div>
 </div>
