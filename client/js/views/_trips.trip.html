@@ -1,3 +1,15 @@
 <div>
 	<h1>{{id}}</h1>
+	<div id="snapshots">
+		<ul ng-repeat="snapshot in snapshots">
+			<li><h3>Latitude: {{snapshot.origin[0].latitude}}, Longitude: {{snapshot.origin[0].longitude}}</h3></li>
+			<li><strong>Temperature:</strong> {{snapshot.temperature}}</li>
+			<li><strong>Condition:</strong> {{snapshot.condition}}</li>
+			<li><strong>Dewpoint:</strong> {{snapshot.dewpoint}}</li>
+			<li><strong>Humidity:</strong> {{snapshot.humidity}}</li>
+			<li><strong>Pressure(in.):</strong> {{snapshot.pressure.in}}</li>
+			<li><strong>Wind:</strong> {{snapshot.wind.speed}} MPH, {{snapshot.wind.direction}}</li>
+		</ul>
+	</div>
+	<a href="#/trips" class="btn btn-success">Back</a>
 </div>
