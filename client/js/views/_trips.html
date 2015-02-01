@@ -1,0 +1,18 @@
+<div ng-controller="TripController">
+	<h2>My Trips</h2>
+	<div id="trips-container">
+		{{test}}
+		<table class="table table-striped">
+			<thead>
+				<td>Date</td>
+				<td>Location</td>
+				<td>Duration</td>
+			</thead>
+			<tr ng-repeat="trip in trips">
+				<td>{{trip.start_time}}</td>
+				<td>{{trip.origin}}</td>
+				<td>{{trip.id}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
