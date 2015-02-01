@@ -7,6 +7,11 @@ app.service('$trips', function($http){
 				return response;
 			});
 			return promise;
+		},
+		postData: function(data){
+			$http.post('http://localhost:3000/api/trips', data).success(function(data, status){
+				console.log(status);
+			});
 		}
 	};
 	
