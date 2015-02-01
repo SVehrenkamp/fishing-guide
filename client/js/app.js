@@ -15,5 +15,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('trips', {
 			url: '/trips',
 			templateUrl: 'js/views/_trips.html'
+		})
+		.state('trip', {
+			url: '/trips/:tripId',
+			templateUrl: 'js/views/_trips.trip.html',
+			controller: 'TripSessionController'
 		});
 });

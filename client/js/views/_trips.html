@@ -8,12 +8,12 @@
 				<td>Temperature</td>
 			</thead>
 			<tr ng-repeat="trip in trips">
-				<td>{{trip.start_time}}</td>
-				<td>{{trip.origin[0].city}}</td>
-				<td>{{trip.snapshots[0].temperature}}</td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.start_time}}</a></td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.origin[0].city}}</a></td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.snapshots[0].temperature}}</a></td>
 			</tr>
 		</table>
 
-		<button class="btn btn-primary" ng-click="postData()">Take Snapshot</button>
+		<button class="btn btn-primary" ng-click="createTrip()">Take Snapshot</button>
 	</div>
 </div>

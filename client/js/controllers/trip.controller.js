@@ -1,4 +1,4 @@
-app.controller('TripController', function($scope, $trips, $weather){
+app.controller('TripController', function($scope, $trips, $weather, $location){
 	
 	$weather.getWeather().then(function(response){
 		response = response.data;
@@ -11,7 +11,10 @@ app.controller('TripController', function($scope, $trips, $weather){
 					latitude : response.current_observation.display_location.latitude,
 					longitude : response.current_observation.display_location.longitude
 				}],
-				snapshots : [{
+				snapshots : []
+
+			};
+		var snapshot = {
 					origin : [{
 						city : response.current_observation.display_location.city,
 						state : response.current_observation.display_location.state,
@@ -33,9 +36,7 @@ app.controller('TripController', function($scope, $trips, $weather){
 						speed : response.current_observation.wind_mph,
 						direction : response.current_observation.wind_dir
 					}
-				}]
-
-			};
+				}
 
 		$scope.weather = weatherData;
 	});
@@ -44,11 +45,12 @@ app.controller('TripController', function($scope, $trips, $weather){
 		$scope.trips = resp.data;
 	});
 
-	$scope.postData = function(){
-		$trips.postData(JSON.stringify($scope.weather));
-		$trips.getTrips().then(function(resp){
-		$scope.trips = resp.data;
-	});
+	$scope.createTrip = function(){
+		$trips.createTrip(JSON.stringify($scope.weather)).success(function(data){
+		
+		$location.url('/trips/'+data.id);	
+		});
+		
 	};
 
 });
