@@ -1,16 +1,27 @@
 <div>
 	<h1>{{id}}</h1>
-	<div class="snapshot" ng-repeat="snapshot in snapshots">
-		<h3>Snapshot #{{$index+1}}</h3>
-		<ul>
-			<li>Latitude: {{snapshot.origin[0].latitude}}, Longitude: {{snapshot.origin[0].longitude}}</li>
-			<li><strong>Temperature:</strong> {{snapshot.temperature}}</li>
-			<li><strong>Condition:</strong> {{snapshot.condition}}</li>
-			<li><strong>Dewpoint:</strong> {{snapshot.dewpoint}}</li>
-			<li><strong>Humidity:</strong> {{snapshot.humidity}}</li>
-			<li><strong>Pressure(in.):</strong> {{snapshot.pressure.in}}</li>
-			<li><strong>Wind:</strong> {{snapshot.wind.speed}} MPH, {{snapshot.wind.direction}}</li>
-		</ul>
+	<div class="snapshot">
+		<h3>Snapshots</h3>
+		<table class="table table-striped">
+			<thead>
+				<td>Time</td>
+				<td>Temperature</td>
+				<td>Condition</td>
+				<td>Dewpoint</td>
+				<td>Humidity</td>
+				<td>Pressure(in.)</td>
+				<td>Wind</td>
+			</thead>
+			<tr ng-repeat="snapshot in snapshots">
+				<td>{{snapshot.timestamp}}</td>
+				<td>{{snapshot.temperature}}</td>
+				<td>{{snapshot.condition}}</td>
+				<td>{{snapshot.dewpoint}}</td>
+				<td>{{snapshot.humidity}}</td>
+				<td>{{snapshot.pressure.in}}</td>
+				<td>{{snapshot.wind.speed}} MPH, {{snapshot.wind.direction}}</td>
+			</tr>
+		</table>
 	</div>
 	
 	<button ng-click="addFish()" class="btn btn-success"> + Fish</button> <a href="#/trips" class="btn btn-danger">Back</a>
