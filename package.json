@@ -36,7 +36,6 @@
     "requirejs": "^2.1.14",
     "underscore": "1.x"
   },
-  "name": "FishingGuide",
   "repository": {
     "type": "git",
     "url": "https://github.com/SVehrenkamp/fishing-guide"

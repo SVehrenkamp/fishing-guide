@@ -9,7 +9,18 @@
     "end_time": {
       "type": "date"
     },
-    "origin": {}
+    "origin": {
+      "type": {}
+    },
+    "moon_phase": {
+      "type": {}
+    },
+    "sunrise": {
+      "type": {}
+    },
+    "sunset": {
+      "type": {}
+    }
   },
   "validations": [],
   "relations": {},
