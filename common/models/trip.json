@@ -9,16 +9,7 @@
     "end_time": {
       "type": "date"
     },
-    "origin": {
-      "type": [
-        "any"
-      ]
-    },
-    "snapshots": {
-      "type": [
-        "object"
-      ]
-    }
+    "origin": {}
   },
   "validations": [],
   "relations": {},

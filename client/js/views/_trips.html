@@ -5,12 +5,14 @@
 			<thead>
 				<td>Date</td>
 				<td>Location</td>
-				<td>Temperature</td>
+				<td>Latitude</td>
+				<td>Longitude</td>
 			</thead>
 			<tr ng-repeat="trip in trips">
 				<td><a href="#/trips/{{trip.id}}">{{trip.start_time}}</a></td>
-				<td><a href="#/trips/{{trip.id}}">{{trip.origin[0].city}}</a></td>
-				<td><a href="#/trips/{{trip.id}}">{{trip.snapshots[0].temperature}}</a></td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.origin.city}}</a></td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.origin.latitude}}</a></td>
+				<td><a href="#/trips/{{trip.id}}">{{trip.origin.longitude}}</a></td>
 			</tr>
 		</table>
 

@@ -16,6 +16,10 @@ app.service('$trips', function($http){
 		},
 		createTrip: function(data){
 			return $http.post('http://localhost:3000/api/trips', data);
+		},
+		createSnapshot: function(id){
+			return $http.put('http://localhost:3000/api/trips/'+id, data);
+
 		}
 	};
 	

@@ -1,44 +1,10 @@
 app.controller('TripController', function($scope, $trips, $weather, $location){
 	
 	$weather.getWeather().then(function(response){
-		response = response.data;
-		var weatherData = {
-				start_time: Date.now(),
-				origin : [{
-					city : response.current_observation.display_location.city,
-					state : response.current_observation.display_location.state,
-					zip : response.current_observation.display_location.zip,
-					latitude : response.current_observation.display_location.latitude,
-					longitude : response.current_observation.display_location.longitude
-				}],
-				snapshots : []
-
-			};
-		var snapshot = {
-					origin : [{
-						city : response.current_observation.display_location.city,
-						state : response.current_observation.display_location.state,
-						zip : response.current_observation.display_location.zip,
-						latitude : response.current_observation.display_location.latitude,
-						longitude : response.current_observation.display_location.longitude
-					}],
-					temperature : response.current_observation.temp_f,
-					dewpoint : response.current_observation.dewpoint_f,
-					
-					humidity : response.current_observation.relative_humidity,
-					pressure : {
-						mb : response.current_observation.pressure_mb,
-						in : response.current_observation.pressure_in,
-						trend : response.current_observation.pressure_trend
-					},
-					condition : response.current_observation.weather,
-					wind : {
-						speed : response.current_observation.wind_mph,
-						direction : response.current_observation.wind_dir
-					}
-				}
-
-		$scope.weather = weatherData;
+		console.log('CONTROLLER::', response);
+		
+		$scope.initialTripData = response.data;
+		$scope.initialSnapshot = response.snapshot;
 	});
 
 	$trips.getTrips().then(function(resp){
@@ -46,7 +12,7 @@ app.controller('TripController', function($scope, $trips, $weather, $location){
 	});
 
 	$scope.createTrip = function(){
-		$trips.createTrip(JSON.stringify($scope.weather)).success(function(data){
+		$trips.createTrip(JSON.stringify($scope.initialTripData)).success(function(data){
 		
 		$location.url('/trips/'+data.id);	
 		});
