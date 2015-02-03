@@ -1,13 +1,31 @@
-app.controller('TripSessionController', function($scope, $stateParams, $trips){
+app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval){
 	$scope.id = $stateParams.tripId;
-	$trips.getSnapshots($scope.id).then(function(resp){
-		console.log('HEAD::', resp);
-		$scope.head = resp;
-		$scope.snapshots = resp.snapshot;
-	});
+
+	$scope.getSnapshots = function(){
+		$trips.getSnapshots($scope.id).then(function(data){
+			$scope.snapshots = data.data;
+		});
+	}
 
 	$scope.addFish = function(){
-		alert('FISH ADDED!!');
+		$weather.getWeather().then(function(response){
+			$scope.snapshot = response.snapshot;
+			$scope.snapshot.tripId = $scope.id;
+			$scope.snapshot.timestamp = Date.now();
+
+			$trips.createSnapshot(JSON.stringify($scope.snapshot)).then(function(data){
+				$scope.getSnapshots();
+			});
+
+		});
 	};
+
+	//Take Snapshot Every 60 seconds
+	$interval(function(){
+		$scope.addFish();
+		console.log('Snapshot Take at', Date.now());
+	}, 20000);
+
+	$scope.getSnapshots();
 
 });

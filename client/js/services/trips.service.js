@@ -8,8 +8,8 @@ app.service('$trips', function($http){
 			return promise;
 		},
 		getSnapshots: function(id){
-			var promise = $http.get('http://localhost:3000/api/trips/'+id).success(function(response){
-				
+			var promise = $http.get('http://localhost:3000/api/snapshots?filter[where][tripId]='+id).success(function(response){
+				//console.log(response);
 				return response;
 			});
 			return promise;
@@ -17,8 +17,8 @@ app.service('$trips', function($http){
 		createTrip: function(data){
 			return $http.post('http://localhost:3000/api/trips', data);
 		},
-		createSnapshot: function(id){
-			return $http.put('http://localhost:3000/api/trips/'+id, data);
+		createSnapshot: function(data){
+			return $http.post('http://localhost:3000/api/snapshots/', data);
 
 		}
 	};
