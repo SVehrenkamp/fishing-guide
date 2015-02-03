@@ -29,5 +29,9 @@
   "trip": {
     "dataSource": "mongo",
     "public": true
+  },
+  "snapshot": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
