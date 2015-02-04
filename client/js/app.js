@@ -1,24 +1,40 @@
 //Initialize App
-var app = angular.module('app', ['ngResource', 'ngTouch', 'ui.router']);
+var app = angular.module('app', ['ngResource', 'ngCookies', 'ngTouch', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
 		.state('root', {
 			url: '/',
-			templateUrl: 'js/views/_main.html'
+			views: {
+				'app' : {
+					templateUrl: 'js/views/_main.html',
+					controller: 'MainController'
+				}
+			}
 		})
 		.state('about', {
 			url: '/about',
-			templateUrl: 'js/views/_about.html'
+			views: {
+				'body' : {
+					templateUrl: 'js/views/_about.html'
+				}
+			}
 		})
 		.state('trips', {
 			url: '/trips',
-			templateUrl: 'js/views/_trips.html'
-		})
-		.state('trip', {
+			views: {
+				'body' : {
+					templateUrl: 'js/views/_trips.html'
+				}
+			}
+		}).state('trip', {
 			url: '/trips/:tripId',
-			templateUrl: 'js/views/_trips.trip.html',
-			controller: 'TripSessionController'
+			views: {
+				'body' : {
+					templateUrl: 'js/views/_trips.trip.html',
+					controller: 'TripSessionController'
+				}
+			}
 		});
 });

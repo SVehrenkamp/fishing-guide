@@ -1,11 +1,16 @@
-app.factory('$weather', function($http,$q){
+app.factory('$weather', function($http,$q, $cookieStore){
+		
+		var lat = ($cookieStore.get('lat')).toString();
+		var long = ($cookieStore.get('long')).toString();
 	return {
 		key: "35cc6e75f95400aa",
-		url: "http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/55904.json",
+		url: "http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/"+lat+","+long+".json",
+
 		getWeather: function(params){
-			
 			var deferred = $q.defer();
 			$http.get(this.url).success(function(response){	
+				
+			console.log(response);
 				deferred.resolve({
 					data: {
 						start_time: Date.now(),

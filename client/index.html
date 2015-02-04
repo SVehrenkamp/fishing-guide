@@ -22,18 +22,20 @@
 			      </ul>
 			  </div>
 			</nav>
-			<h1>Welcome to your FishingGuide App!</h1>
-			<div ui-view></div>
+			<div ui-view="app"></div>
+			<div ui-view="body"></div>
 		</div>
 		<!--Bootstrap Vendor Javscripts HERE-->
 		<script src="js/vendor/underscore/underscore-min.js"></script>
 		<script src="js/vendor/angular/angular.min.js"></script>
 		<script src="js/vendor/angular-resource/angular-resource.min.js"></script>
 		<script src="js/vendor/angular-touch/angular-touch.min.js"></script>
+		<script src="js/vendor/angular-cookies/angular-cookies.min.js"></script>
 		<script src="js/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
 		<!--Bootstrap App Scripts HERE-->
 		<script src="js/app.js"></script>
 		<!--Controllers-->
+		<script src="js/controllers/main.controller.js"></script>
 		<script src="js/controllers/trip.controller.js"></script>
 		<script src="js/controllers/trip.session.controller.js"></script>
 		<!--Services-->
