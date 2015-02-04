@@ -19,13 +19,7 @@ app.controller('TripSessionController', function($scope, $stateParams, $trips, $
 
 		});
 	};
-
-	//Take Snapshot Every 60 seconds
-	$interval(function(){
-		$scope.addFish();
-		console.log('Snapshot Take at', Date.now());
-	}, 20000);
-
+	
 	$scope.getSnapshots();
 
 });
