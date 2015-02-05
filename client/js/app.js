@@ -1,5 +1,5 @@
 //Initialize App
-var app = angular.module('app', ['ngResource', 'ngCookies', 'ngTouch', 'ui.router']);
+var app = angular.module('app', ['ngResource', 'ngCookies', 'ngTouch', 'ui.router', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');
@@ -7,7 +7,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		.state('root', {
 			url: '/',
 			views: {
-				'app' : {
+				'body' : {
 					templateUrl: 'js/views/_main.html',
 					controller: 'MainController'
 				}
