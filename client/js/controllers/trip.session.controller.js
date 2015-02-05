@@ -1,4 +1,4 @@
-app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval){
+app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval, $modal){
 	$scope.id = $stateParams.tripId;
 
 	$scope.getSnapshots = function(){
@@ -19,6 +19,19 @@ app.controller('TripSessionController', function($scope, $stateParams, $trips, $
 
 		});
 	};
+
+	$scope.openModal = function(){
+		var modalInstance = $modal.open({
+	      templateUrl: 'js/views/_modal.html',
+	      controller: 'ModalController',
+	      resolve: {
+	        addFish: function () {
+	          return $scope.addFish;
+	        }
+	      }
+ 	   });
+
+	}
 	
 	$scope.getSnapshots();
 
