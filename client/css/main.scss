@@ -69,3 +69,19 @@ button{
 .loaded{
 	display:none;
 }
+
+.modal-body{
+	float:left;
+	.radio{
+		float:left;
+		margin:5px;
+	}
+	.radio-selected{
+			color: #fff;
+			background-color: #449d44;
+			border-color: #398439;
+	}
+	input[name=species]{
+		display:none;
+	}
+}
