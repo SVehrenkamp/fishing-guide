@@ -6,24 +6,22 @@
 	</head>
 	<body>
 		<div id="wrapper" class="container" ng-app="app">
-			<nav class="navbar navbar-default">
+			<!-- <nav class="navbar navbar-default">
 			  <div class="container-fluid">
-			    <!--NavBar Header-->
 			    <div class="navbar-header">
 			      <a class="navbar-brand" href="#">
 			        <span class="brand">FisingGuide
 			      </a>
 			    </div>
-			    <!--NavBar Links-->
 			    <ul class="nav navbar-nav">
 			        <li class="active"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
 			        <li><a href="#/about">About</a></li>
 			        <li><a href="#/trips">My Trips</a></li>
 			      </ul>
 			  </div>
-			</nav>
+			</nav> -->
 			<div ui-view="app"></div>
-			<div ui-view="body"></div>
+			<div class="container-fluid" ui-view="body"></div>
 		</div>
 		<!--Bootstrap Vendor Javscripts HERE-->
 		<script src="js/vendor/underscore/underscore-min.js"></script>

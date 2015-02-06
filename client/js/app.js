@@ -8,8 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 			url: '/',
 			views: {
 				'body' : {
-					templateUrl: 'js/views/_main.html',
-					controller: 'MainController'
+					templateUrl: 'js/views/_trips.html'
 				}
 			}
 		})

@@ -2,10 +2,32 @@
 @import '../bootstrap.css';
 
 /*Main SCSS Styles*/
+$small:480px;
+
 h1{
 	color:#666666;
+	@media screen and (max-width: $small){
+		font-size:24px;
+	}
 }
-
+button{
+	&.lg{
+		width:90%;
+		padding:20px;
+		margin:10px 0px;
+		font-size:24px;
+		font-weight:bold;
+		text-shadow:0px 1px 1px #000;
+	}
+}
+.front-page{
+	top:25%;
+	position:absolute;
+}
+.col-centered{
+	margin:0 auto;
+	text-align:center;
+}
 /*Ajax Loader*/
 .loading{
 	position:fixed;
