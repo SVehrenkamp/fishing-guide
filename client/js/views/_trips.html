@@ -1,4 +1,6 @@
 <div class="col-centered" ng-controller="TripController">
+	<div id="loader" ng-class="isLoading ? 'loading' : 'loaded'	"><img src="/assets/ajax-loader.gif" /></div>
+	<div class="front-page">
 	<h2>Start a new Trip</h2>
 
 <!-- 	<div id="trips-container">
@@ -20,5 +22,4 @@
  -->		<button class="btn btn-primary lg" ng-click="createTrip()">Start Trip</button>
 	</div>
 	
-	<div id="loader" ng-class="isLoading ? 'loading' : 'loaded'	"><img src="/assets/ajax-loader.gif" /></div>
 </div>

@@ -40,9 +40,9 @@ app.controller('TripController', function($scope, $trips, $weather, $location, i
 	$scope.getLocation();
 
 
-	$trips.getTrips().then(function(resp){
-		$scope.trips = resp.data;
-	});
+	// $trips.getTrips().then(function(resp){
+	// 	$scope.trips = resp.data;
+	// });
 
 	$scope.createTrip = function(){
 		$trips.createTrip(JSON.stringify($scope.initialTripData)).success(function(data){
