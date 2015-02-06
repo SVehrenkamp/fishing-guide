@@ -5,6 +5,7 @@
 		<table class="table table-striped">
 			<thead>
 				<td>Time</td>
+				<td>Fish</td>
 			</thead>
 			<tr ng-repeat="snapshot in snapshots">
 				<td><a ng-click="collapse($index)">{{snapshot.timestamp}}</a><div>
@@ -15,12 +16,14 @@
 						<li>Dewpoint {{snapshot.dewpoint}}&deg;</li>
 						<li>Pressure {{snapshot.pressure.in}} in.</li>
 						<li>Wind {{snapshot.wind.speed}}mph {{snapshot.wind.direction}}</li>
+						<li ng-if="snapshot.fish">Fish Caught!</li>
 					</ul>
 				</div></td>
+				<td><a ng-if="snapshot.fish" ng-click="collapse($index)" class="fish-icon"></td>
 
 			</tr>
 		</table>
 	</div>
 	
-	<button ng-click="openModal()" class="btn btn-success lg"> + Fish</button> <button href="#/trips" class="btn btn-danger lg">End</button>
+	<button ng-click="openModal()" class="btn btn-success lg"> + Fish</button> <button ng-click="endTrip()" class="btn btn-danger lg">End</button>
 </div>

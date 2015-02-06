@@ -1,6 +1,8 @@
-app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval, $modal){
+app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval, $modal, $location){
 	$scope.id = $stateParams.tripId;
 	$scope.collapsed = [];
+	$scope.active = true;
+
 	$scope.collapse = function($index){
 		if($scope.collapsed[$index] === true){
 			$scope.collapsed[$index] = false
@@ -23,11 +25,13 @@ app.controller('TripSessionController', function($scope, $stateParams, $trips, $
 			console.log($scope.data)
 		});
 	}
-	$scope.addFish = function(){
+	$scope.addFish = function(modalData){
+
 		$weather.getWeather().then(function(response){
 			$scope.snapshot = response.snapshot;
 			$scope.snapshot.tripId = $scope.id;
 			$scope.snapshot.timestamp = Date.now();
+			$scope.snapshot.fish = modalData;
 
 			$trips.createSnapshot(JSON.stringify($scope.snapshot)).then(function(data){
 				$scope.getSnapshots();
@@ -48,9 +52,16 @@ app.controller('TripSessionController', function($scope, $stateParams, $trips, $
  	   });
 
 	}
-	$interval(function(){
-		$scope.addFish()
-	}, 420000);
+
+	$scope.endTrip = function(){
+		$scope.active = false;
+		$location.url('/');
+	}
+	if($scope.active){
+		$interval(function(){
+			$scope.addFish()
+		}, 420000);
+	} else { console.log('Trip ended..')}
 	$scope.getSnapshots();
 
 });
