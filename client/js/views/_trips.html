@@ -1,5 +1,6 @@
 <div ng-controller="TripController">
 	<h2>My Trips</h2>
+
 	<div id="trips-container">
 		<table class="table table-striped">
 			<thead>
@@ -18,4 +19,6 @@
 
 		<button class="btn btn-primary" ng-click="createTrip()">Start New Fishing Trip</button>
 	</div>
+	
+	<div id="loader" ng-class="isLoading ? 'loading' : 'loaded'	"><img src="/assets/ajax-loader.gif" /></div>
 </div>

@@ -1,7 +1,7 @@
-app.factory('$weather', function($http,$q, $cookieStore){
+app.factory('$weather', function($http,$q, ipCookie){
 		
-		var lat = $cookieStore.get('lat') ? $cookieStore.get('lat').toString() : null;
-		var long = $cookieStore.get('long') ? $cookieStore.get('long').toString() : null;
+		var lat = ipCookie('lat') ? ipCookie('lat').toString() : null;
+		var long = ipCookie('long') ? ipCookie('long').toString() : null;
 	return {
 		key: "35cc6e75f95400aa",
 		url: "http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/"+lat+","+long+".json",

@@ -1,5 +1,5 @@
 //Initialize App
-var app = angular.module('app', ['ngResource', 'ngCookies', 'ngTouch', 'ui.router', 'ui.bootstrap']);
+var app = angular.module('app', ['ngResource', 'ipCookie', 'ngTouch', 'ui.router', 'ui.bootstrap']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise('/');

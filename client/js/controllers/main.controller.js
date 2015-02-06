@@ -1,4 +1,4 @@
-app.controller('MainController', function($scope, $cookieStore, $weather, $trips, $location){
+app.controller('MainController', function($scope, ipCookie, $weather, $trips, $location){
 	
 	//console.log('MainController Initialized::', $cookies);
 	//GET Location
@@ -16,8 +16,8 @@ app.controller('MainController', function($scope, $cookieStore, $weather, $trips
 			latitude: location.coords.latitude,
 			longitude: location.coords.longitude
 		};
-		$cookieStore.put('lat', coords.latitude);
-		$cookieStore.put('long', coords.longitude);
+		ipCookie('lat', coords.latitude);
+		ipCookie('long', coords.longitude);
 		
 		$scope.$apply(function(){
 			$scope.isLoading = false;
