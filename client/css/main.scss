@@ -2,8 +2,12 @@
 @import '../bootstrap.css';
 
 /*Main SCSS Styles*/
+
+/*Variables and Mixins*/
+$medium: 720px;
 $small:480px;
 
+/*Elements*/
 h1{
 	color:#666666;
 	@media screen and (max-width: $small){
@@ -20,9 +24,25 @@ button{
 		text-shadow:0px 1px 1px #000;
 	}
 }
+.fish-icon{
+	width:25px;
+	height:25px;
+	background-image:url(../../assets/fish.svg);
+	background-size:25px 25px;
+	display:block;
+}
+
+/*Sections And States*/
+#wrapper{
+	width:960px;
+
+	@media screen and (max-width: $medium){
+		width:100%;
+	}
+
+}
 .front-page{
 	top:25%;
-	position:absolute;
 }
 .col-centered{
 	margin:0 auto;
