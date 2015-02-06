@@ -1,28 +1,26 @@
 <div>
-	<h1>{{id}}</h1>
+	<h1>Trip Started at:<br />{{time}}</h1>
 	<div class="snapshot">
-		<h3>Snapshots</h3>
+		<h4>Snapshots</h4>
 		<table class="table table-striped">
 			<thead>
 				<td>Time</td>
-				<td>Temperature</td>
-				<td>Condition</td>
-				<td>Dewpoint</td>
-				<td>Humidity</td>
-				<td>Pressure(in.)</td>
-				<td>Wind</td>
 			</thead>
 			<tr ng-repeat="snapshot in snapshots">
-				<td>{{snapshot.timestamp}}</td>
-				<td>{{snapshot.temperature}}</td>
-				<td>{{snapshot.condition}}</td>
-				<td>{{snapshot.dewpoint}}</td>
-				<td>{{snapshot.humidity}}</td>
-				<td>{{snapshot.pressure.in}}</td>
-				<td>{{snapshot.wind.speed}} MPH, {{snapshot.wind.direction}}</td>
+				<td><a ng-click="collapse($index)">{{snapshot.timestamp}}</a><div>
+					<ul ng-show="collapsed[$index]">
+						<li>{{snapshot.origin.latitude}}, {{snapshot.origin.longitude}}</li>
+						<li>{{snapshot.temperature}}&deg;F</li>
+						<li>{{snapshot.condition}}</li>
+						<li>Dewpoint {{snapshot.dewpoint}}&deg;</li>
+						<li>Pressure {{snapshot.pressure.in}} in.</li>
+						<li>Wind {{snapshot.wind.speed}}mph {{snapshot.wind.direction}}</li>
+					</ul>
+				</div></td>
+
 			</tr>
 		</table>
 	</div>
 	
-	<button ng-click="openModal()" class="btn btn-success"> + Fish</button> <a href="#/trips" class="btn btn-danger">Back</a>
+	<button ng-click="openModal()" class="btn btn-success lg"> + Fish</button> <button href="#/trips" class="btn btn-danger lg">End</button>
 </div>

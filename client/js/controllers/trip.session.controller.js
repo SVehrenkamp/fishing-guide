@@ -1,12 +1,28 @@
 app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval, $modal){
 	$scope.id = $stateParams.tripId;
+	$scope.collapsed = [];
+	$scope.collapse = function($index){
+		if($scope.collapsed[$index] === true){
+			$scope.collapsed[$index] = false
+		} else {
+			$scope.collapsed[$index] = true;
+		}
+	}
+	var formatTime = function(time, datestring){
+		time = new Date(time);
+		datestring = 
+			(time.getMonth()+1) +'-'+ time.getDate()+'-'+time.getFullYear()+' at '+(time.getHours()+1)+':'+(time.getMinutes()+1);
+		$scope.time = datestring;
+	}
 
 	$scope.getSnapshots = function(){
 		$trips.getSnapshots($scope.id).then(function(data){
 			$scope.snapshots = data.data;
+			$scope.data = $scope.snapshots[0];
+			formatTime($scope.data.timestamp);
+			console.log($scope.data)
 		});
 	}
-
 	$scope.addFish = function(){
 		$weather.getWeather().then(function(response){
 			$scope.snapshot = response.snapshot;
@@ -32,7 +48,9 @@ app.controller('TripSessionController', function($scope, $stateParams, $trips, $
  	   });
 
 	}
-	
+	$interval(function(){
+		$scope.addFish()
+	}, 420000);
 	$scope.getSnapshots();
 
 });
