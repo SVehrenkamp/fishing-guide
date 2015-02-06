@@ -1,16 +1,24 @@
 app.controller('ModalController', function($scope, $modalInstance, addFish){
-	var fish = {
-		'species' : 'bluegill',
-		'size' : "8in",
-		'lure' : {
-			'type': 'jig',
-			'size': '1/64oz',
-			'color': 'glow red'
-		}
-	};
+
+	$scope.species = [
+		'sunfish',
+		'crappie',
+		'bass',
+		'ike',
+		'catfish',
+		'walleye',
+		'sauger',
+		'trout'
+
+	];
+	$scope.fish = {};
+	$scope.selected = [];
+	$scope.select = function($index){
+		$scope.selected[$index] = true;
+	}
 	$scope.addFish = addFish;
 	$scope.ok = function(){
-		$scope.addFish(fish);
+		$scope.addFish($scope.fish);
 		$modalInstance.dismiss();
 		console.log('Fish Added!');
 	}
