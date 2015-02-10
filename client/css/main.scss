@@ -34,11 +34,7 @@ button{
 
 /*Sections And States*/
 #wrapper{
-	width:960px;
-
-	@media screen and (max-width: $medium){
-		width:100%;
-	}
+	width:320px;
 
 }
 .front-page{
@@ -69,6 +65,8 @@ button{
 .loaded{
 	display:none;
 }
+/*google maps*/
+.angular-google-map-container { height: 300px; }
 
 .modal-body{
 	float:left;
