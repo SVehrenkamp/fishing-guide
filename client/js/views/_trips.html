@@ -2,7 +2,10 @@
 	<div id="loader" ng-class="isLoading ? 'loading' : 'loaded'	"><img src="/assets/ajax-loader.gif" /></div>
 	<div class="front-page">
 	<h2>Start a new Trip</h2>
-
+	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+		<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        </ui-gmap-marker>
+	</ui-gmap-google-map>
 <!-- 	<div id="trips-container">
 		<table class="table table-striped">
 			<thead>
