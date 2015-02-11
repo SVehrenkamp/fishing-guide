@@ -1,7 +1,10 @@
-app.controller('TripSessionController', function($scope, $stateParams, $trips, $weather, $interval, $modal, $location){
+app.controller('TripSessionController', function($scope, $rootScope, $stateParams, $trips, $weather, $interval, $modal, $location){
 	$scope.id = $stateParams.tripId;
 	$scope.collapsed = [];
 	$scope.active = true;
+	$scope.$on('$locationChangeStart', function(event) {
+		$rootScope.tripStarted = false;
+	});
 
 	$scope.collapse = function($index){
 		if($scope.collapsed[$index] === true){
