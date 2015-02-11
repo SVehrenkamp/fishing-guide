@@ -35,13 +35,39 @@ app
 						templateUrl: 'js/views/_trips.html'
 					}
 				}
-			}).state('trip', {
-				url: '/trips/:tripId',
-				views: {
-					'body' : {
-						templateUrl: 'js/views/_trips.trip.html',
-						controller: 'TripSessionController'
-					}
-				}
+			}).state('root.trip', {
+				url: ':tripId',
+				templateUrl: 'js/views/_trips.trip.html',
+				controller: 'TripSessionController'
 			});
 	});
+
+		//Bootstrap App here
+		var coords = {};
+		var setLocation = function(location){
+
+			//coords.latitude = location.coords.latitude;
+			//coords.longitude = location.coords.longitude;
+			//Set Coords as cookies
+			//ipCookie('lat', this.coords.latitude);
+			//ipCookie('long', this.coords.longitude);
+
+			app.constant('coordinates', location.coords);
+			console.log('Location::', location.coords);
+			bootstrapApplication();
+
+		}
+
+		//Call the browser's geolocation method to get coords
+		var getLocation = function(){
+			navigator.geolocation.getCurrentPosition(this.setLocation);
+			console.log('Getting Location..');
+			return this;
+		}
+		var bootstrapApplication = function() {
+        	angular.element(document).ready(function() {
+        		angular.element('#loader').addClass('loaded');
+            	angular.bootstrap(document, ["app"]);
+        });
+    }
+		getLocation()

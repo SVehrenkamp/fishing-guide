@@ -1,14 +1,19 @@
-app.factory('$weather', function($http,$q, ipCookie){
+app.factory('$weather', function($http,$q, ipCookie, coordinates){
 		
-		var lat = ipCookie('lat') ? ipCookie('lat').toString() : null;
-		var long = ipCookie('long') ? ipCookie('long').toString() : null;
+		// var lat = ipCookie('lat') ? ipCookie('lat').toString() : null;
+		// var long = ipCookie('long') ? ipCookie('long').toString() : null;
+		
+		//console.log(lat, long, '::$weather');
 	return {
 		key: "35cc6e75f95400aa",
-		url: "http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/"+lat+","+long+".json",
+		//url: "http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/"+lat+","+long+".json",
 
 		getWeather: function(params){
-			var deferred = $q.defer();
-			$http.get(this.url).success(function(response){	
+			var lat = coordinates.latitude, 
+				long = coordinates.longitude,
+				deferred = $q.defer(),
+				url ="http://api.wunderground.com/api/35cc6e75f95400aa/conditions/q/"+lat+","+long+".json";
+			$http.get(url).success(function(response){	
 				
 			console.log(response);
 				deferred.resolve({
@@ -49,7 +54,7 @@ app.factory('$weather', function($http,$q, ipCookie){
 				
 				});
 			});
-			console.log(deferred.promise);
+			console.log('Promise::',deferred.promise);
 			return deferred.promise;
 		}
 	};
