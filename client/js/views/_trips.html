@@ -1,5 +1,6 @@
 <div class="col-centered" ng-controller="TripController">
 	
+ 	<h4>Welcome {{user.username}}</h4>
 	<div class="front-page">
 	<ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
 		<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
@@ -22,7 +23,6 @@
 		</table>
 
  -->		<button class="btn btn-primary lg" ng-show="!tripStarted" ng-click="createTrip()">Start Trip</button>
- 	<h4>Welcome {{user.username}}</h4>
  	<div ui-view></div>
 	</div>
 	

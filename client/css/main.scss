@@ -68,6 +68,20 @@ button{
 /*google maps*/
 .angular-google-map-container { height: 300px; }
 
+#login{
+	text-align:center;
+
+	#login-form{
+		margin-top:20%;
+		text-align:left;
+
+		button{
+			width:100%;
+			padding:20px;
+		}
+	}
+}
+
 .modal-body{
 	float:left;
 	.radio{
