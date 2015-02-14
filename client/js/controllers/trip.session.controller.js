@@ -1,4 +1,4 @@
-app.controller('TripSessionController', function($scope, $rootScope, $stateParams, $trips, $weather, $interval, $modal, $location){
+app.controller('TripSessionController', function($scope, $rootScope, $stateParams, $trips, $forecast, $interval, $modal, $location){
 	$scope.id = $stateParams.tripId;
 	$scope.collapsed = [];
 	$scope.active = true;
@@ -30,7 +30,7 @@ app.controller('TripSessionController', function($scope, $rootScope, $stateParam
 	}
 	$scope.addFish = function(modalData){
 
-		$weather.getWeather().then(function(response){
+		$forecast.getWeather().then(function(response){
 			$scope.snapshot = response.snapshot;
 			$scope.snapshot.tripId = $scope.id;
 			$scope.snapshot.timestamp = Date.now();

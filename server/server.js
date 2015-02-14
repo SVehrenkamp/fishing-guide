@@ -1,5 +1,6 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var proxy = require('simple-http-proxy');
 
 var app = module.exports = loopback();
 
@@ -19,6 +20,19 @@ app.start = function() {
     console.log('Web server listening at: %s', app.get('url'));
   });
 };
+
+
+ app.use('/forecast/:coords', proxy('https://api.forecast.io/forecast/24afef7e6da9ac9b4819107bd7a9f4b0/', {
+  onrequest: function(options, req){
+  	options.path += req.params.coords;
+    return this;
+  },
+  onresponse: function(msg, resp){
+    //console.log(resp);
+  }
+}));
+
+
 
 // start the server if `$ node server.js`
 if (require.main === module) {

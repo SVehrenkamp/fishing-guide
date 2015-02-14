@@ -10,6 +10,15 @@
     "origin": {
       "type": "object"
     },
+    "sunrise": {
+      "type": "string"
+    },
+    "sunset": {
+      "type": "string"
+    },
+    "moonPhase": {
+      "type": "string"
+    },
     "temperature": {
       "type": "string"
     },
