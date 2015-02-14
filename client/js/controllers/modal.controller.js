@@ -4,7 +4,7 @@ app.controller('ModalController', function($scope, $modalInstance, addFish){
 		'sunfish',
 		'crappie',
 		'bass',
-		'ike',
+		'Pike',
 		'catfish',
 		'walleye',
 		'sauger',
@@ -13,8 +13,13 @@ app.controller('ModalController', function($scope, $modalInstance, addFish){
 	];
 	$scope.fish = {};
 	$scope.selected = [];
+
+	$scope.species_selected = false;
+
+
 	$scope.select = function($index){
 		$scope.selected[$index] = true;
+		$scope.species_selected = true;
 	}
 	$scope.addFish = addFish;
 	$scope.ok = function(){

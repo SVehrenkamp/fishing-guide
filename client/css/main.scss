@@ -79,7 +79,16 @@ button{
 			background-color: #449d44;
 			border-color: #398439;
 	}
+	label{
+		display:block;
+	}
 	input[name=species]{
 		display:none;
+	}
+	#fish-info{
+		input, textarea{
+			width:90%;
+			display:block;
+		}
 	}
 }
