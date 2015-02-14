@@ -1,5 +1,5 @@
 //Initialize App
-var app = angular.module('app', ['ngResource', 'ipCookie', 'ngTouch', 'ui.router', 'ui.bootstrap', 'uiGmapgoogle-maps']);
+var app = angular.module('app', ['ngResource', 'ipCookie', 'ngTouch', 'ui.router', 'ui.bootstrap', 'uiGmapgoogle-maps', 'lbServices']);
 
 app
 	.config(function(uiGmapGoogleMapApiProvider) {
@@ -39,6 +39,15 @@ app
 				url: ':tripId',
 				templateUrl: 'js/views/_trips.trip.html',
 				controller: 'TripSessionController'
+			})
+			.state('login', {
+				url: '/user/login',
+				views: {
+					'body' : {
+						templateUrl: 'js/views/_login.html',
+						controller: 'LoginController'
+					}
+				}
 			});
 	});
 

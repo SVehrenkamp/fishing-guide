@@ -1,11 +1,32 @@
-app.controller('TripController', function($scope, $rootScope, $trips, $weather, $location, ipCookie, coordinates){
+app.controller('TripController', function($scope, $rootScope, $trips, $weather, $location, ipCookie, coordinates, User){
 
 	//console.log('MainController Initialized::', $cookies);
 	//GET Location
 	$rootScope.tripStarted = false;
 	
+	$scope.getUser = function(){
+		$scope.user = User.getCurrent(
+			function(data){
+				//success
+				console.log('Success!');
+			},
+			function(res){
+				//error
+				console.log('ERROR::', res);
+			});
+	};
 
+	$scope.getUser();
     $scope.coords = coordinates;
+
+    //Make sure a user is logged in
+    // if(!$rootScope.user){
+    // 	$location.url('/user/login');
+    // } else {
+    // 	console.log($scope.user.id);
+    // }
+
+
 	// $scope.setLoadingScreen = function(){
 	// 	console.log('done loading!');
 	// 	$scope.isloading = 'false';
@@ -80,9 +101,11 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 	//Get Initial Weather Snapshot Data		
 	$scope.getWeather = function(){	
 		$weather.getWeather().then(function(response){
-			console.log('CONTROLLER::', response);
+			console.log('CONTROLLER::', response.data);
 			$scope.data = response;
+			
 			$scope.initialTripData = response.data;
+
 			$scope.initialSnapshot = response.snapshot;
 		});
 	}	
@@ -103,6 +126,7 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 			});	
 		});
 		$rootScope.tripStarted = true;
+		console.log($scope.user.id);
 		
 	};
 

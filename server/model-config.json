@@ -8,22 +8,22 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongo"
   },
   "AccessToken": {
     "dataSource": "db",
-    "public": false
+    "public": true
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": false
   },
   "trip": {

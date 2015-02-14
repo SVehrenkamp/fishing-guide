@@ -23,8 +23,8 @@ app.factory('$weather', function($http,$q, ipCookie, coordinates){
 							city : response.current_observation.display_location.city,
 							state : response.current_observation.display_location.state,
 							zip : response.current_observation.display_location.zip,
-							latitude : response.current_observation.display_location.latitude,
-							longitude : response.current_observation.display_location.longitude
+							latitude : coordinates.latitude,
+							longitude : coordinates.longitude
 						}
 					},
 					snapshot : {
@@ -32,8 +32,8 @@ app.factory('$weather', function($http,$q, ipCookie, coordinates){
 							city : response.current_observation.display_location.city,
 							state : response.current_observation.display_location.state,
 							zip : response.current_observation.display_location.zip,
-							latitude : response.current_observation.display_location.latitude,
-							longitude : response.current_observation.display_location.longitude
+							latitude : coordinates.latitude,
+							longitude : coordinates.longitude
 						},
 						temperature : response.current_observation.temp_f,
 						dewpoint : response.current_observation.dewpoint_f,
