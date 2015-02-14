@@ -1,4 +1,4 @@
-app.controller('TripController', function($scope, $rootScope, $trips, $weather, $location, ipCookie, coordinates, User){
+app.controller('TripController', function($scope, $rootScope, $trips, $forecast, $location, ipCookie, coordinates, User){
 
 	//console.log('MainController Initialized::', $cookies);
 	//GET Location
@@ -63,7 +63,7 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 	}
 	//Get Initial Weather Snapshot Data		
 	$scope.getWeather = function(){	
-		$weather.getWeather().then(function(response){
+		$forecast.getWeather().then(function(response){
 			console.log('CONTROLLER::', response.data);
 			$scope.data = response;
 			
