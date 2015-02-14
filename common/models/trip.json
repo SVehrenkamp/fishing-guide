@@ -6,6 +6,10 @@
     "start_time": {
       "type": "date"
     },
+    "user_id": {
+      "type": "string",
+      "required": "true"
+      },
     "end_time": {
       "type": "date"
     },

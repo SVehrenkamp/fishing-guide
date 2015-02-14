@@ -3,7 +3,9 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 	//console.log('MainController Initialized::', $cookies);
 	//GET Location
 	$rootScope.tripStarted = false;
+    $scope.coords = coordinates;
 	
+	//Get User info from lb-services
 	$scope.getUser = function(){
 		$scope.user = User.getCurrent(
 			function(data){
@@ -13,51 +15,12 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 			function(res){
 				//error
 				console.log('ERROR::', res);
+				//redirect to login page
+				$location.url('/user/login');
 			});
 	};
 
-	$scope.getUser();
-    $scope.coords = coordinates;
 
-    //Make sure a user is logged in
-    // if(!$rootScope.user){
-    // 	$location.url('/user/login');
-    // } else {
-    // 	console.log($scope.user.id);
-    // }
-
-
-	// $scope.setLoadingScreen = function(){
-	// 	console.log('done loading!');
-	// 	$scope.isloading = 'false';
-	// 	return;
-	// }
-
-	// $scope.setLocation = function(location){
-	// 	console.log('Location::',location);
-	// 	$scope.coords = {
-	// 		latitude: location.coords.latitude,
-	// 		longitude: location.coords.longitude
-	// 	};
-	// 	//Set Coords as cookies
-	// 	ipCookie('lat', $scope.coords.latitude);
-	// 	ipCookie('long', $scope.coords.longitude);
-		
-	// 	$scope.$apply(function(){
-	// 		$scope.isLoading = false;
-	// 		//Draw Map
-	 		
-
-	// 	});
-
-	// }
-	// //Call the browser's geolocation method to get coords
-	// $scope.getLocation = function(){
-	// 	navigator.geolocation.getCurrentPosition($scope.setLocation);
-	// 	console.log('Getting Location..');
-	// }
-
-	//$scope.getLocation();
 	$scope.drawMap = function(){
 		$scope.map = {
 			center: {
@@ -105,7 +68,7 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 			$scope.data = response;
 			
 			$scope.initialTripData = response.data;
-
+			$scope.initialTripData.user_id = $scope.user.id;
 			$scope.initialSnapshot = response.snapshot;
 		});
 	}	
@@ -126,10 +89,12 @@ app.controller('TripController', function($scope, $rootScope, $trips, $weather, 
 			});	
 		});
 		$rootScope.tripStarted = true;
-		console.log($scope.user.id);
 		
 	};
 
+	//Get User
+	$scope.getUser();
+	//Draw Map
 	$scope.drawMap();
 	//Set Marker
 	$scope.setMarker();
